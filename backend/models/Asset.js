@@ -14,11 +14,22 @@ const assetSchema = new Schema({
         type: String
     },
     current_price: {
-        type: mongoose.Types.Decimal128
+        type: mongoose.Types.Decimal128,
+        get: getPrice
+    },
+    id: false
+},  {toJSON: {getters: true}})
+
+
+
+
+
+function getPrice(value) {
+    if (typeof value !== 'undefined') {
+        return parseFloat(value.toString())
     }
-}, {
-    collection: 'assets'
-})
+    return value;
+};
 
 
 

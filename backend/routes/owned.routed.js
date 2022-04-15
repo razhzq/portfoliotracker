@@ -57,7 +57,7 @@ router.route('/owned-assets/:id')
            )
        })
 
-router.delete('/delete-ownded-asset/:id', (req, res, next) => {
+router.delete('/delete-owned-asset/:id', (req, res, next) => {
     ownedAssetSchema.findByIdAndRemove(
         req.params.id, (error, data) => {
             if (error) {

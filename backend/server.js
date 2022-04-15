@@ -3,6 +3,10 @@ let mongoose = require('mongoose')
 let cors = require('cors')
 let bodyParser = require('body-parser');
 
+const AssetName = require('../backend/models/OwnedAsset')
+
+
+
 require('dotenv').config();
 
 
@@ -37,3 +41,5 @@ const server = app.listen(port, () => {
 app.use((req, res, next) => {
     res.status(404).send('Error 404!')
 })
+
+AssetName.find().populate('asset').then( p => console.log(p)).catch(err => console.log(err))
